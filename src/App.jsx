@@ -49,9 +49,5 @@ const tempWatchedData = [
 ];
 
 export default function App() {
-  return (
-    <>
-      <NavigationBar />
-    </>
-  );
+  return <NavigationBar />;
 }
