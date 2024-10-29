@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NavigationBar from './components/NavigationBar';
 
 const tempMovieData = [
   {
@@ -48,5 +49,5 @@ const tempWatchedData = [
 ];
 
 export default function App() {
-  return <></>;
+  return <NavigationBar />;
 }
