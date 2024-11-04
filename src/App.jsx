@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/Navigation/NavigationBar';
+import NumResults from './components/Navigation/NumResults';
+import Search from './components/Navigation/Search';
 
 const tempMovieData = [
   {
@@ -55,7 +57,10 @@ export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   return (
     <>
-      <NavigationBar movies={movies} />
+      <NavigationBar>
+        <Search />
+        <NumResults movies={movies} />
+      </NavigationBar>
       <Main movies={movies} />
     </>
   );
