@@ -49,5 +49,31 @@ const tempWatchedData = [
 ];
 
 export default function App() {
-  return <NavigationBar />;
+  return (
+    <>
+      <NavigationBar />
+      <FilmList />
+    </>
+  );
+}
+
+function FilmList() {
+  return (
+    <div>
+      <ul className="filmlist">
+        {tempMovieData.map((movie) => (
+          <li key={movie.imdbID}>
+            <img src={movie.Poster} alt={`${movie.Title} Poster`} />
+            <h3>{movie.Title}</h3>
+            <div>
+              <p>
+                <span>📅</span>
+                <span>{movie.Year}</span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
