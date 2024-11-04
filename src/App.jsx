@@ -48,32 +48,140 @@ const tempWatchedData = [
   },
 ];
 
+const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
 export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
+  const [query, setQuery] = useState('');
+  const [isOpen1, setIsOpen1] = useState(true);
+  const [isOpen2, setIsOpen2] = useState(true);
+
+  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
+  const avgUserRating = average(watched.map((movie) => movie.userRating));
+  const avgRuntime = average(watched.map((movie) => movie.runtime));
+
+  const handleQueryChange = (newQuery) => {
+    setQuery(newQuery);
+  };
+
+  const handleIsOpen1Change = () => {
+    setIsOpen1((curr) => !curr);
+  };
+  const handleIsOpen2Change = () => {
+    setIsOpen2((curr) => !curr);
+  };
+
   return (
     <>
-      <NavigationBar />
-      <FilmList />
+      <NavigationBar
+        movies={movies}
+        query={query}
+        onQueryChange={handleQueryChange}
+      />
+      <main className="main">
+        <FilmList isOpen1={isOpen1} onIsOpen1Change={handleIsOpen1Change} />
+        <Watched
+          watched={watched}
+          avgImdbRating={avgImdbRating}
+          avgUserRating={avgUserRating}
+          avgRuntime={avgRuntime}
+          onIsOpen2Change={handleIsOpen2Change}
+          isOpen2={isOpen2}
+        />
+      </main>
     </>
   );
 }
 
-function FilmList() {
+function FilmList({ isOpen1, onIsOpen1Change }) {
   return (
-    <div>
-      <ul className="filmlist">
-        {tempMovieData.map((movie) => (
-          <li key={movie.imdbID}>
-            <img src={movie.Poster} alt={`${movie.Title} Poster`} />
-            <h3>{movie.Title}</h3>
+    <div className="box">
+      <button className="btn-toggle" onClick={onIsOpen1Change}>
+        {isOpen1 ? '-' : '+'}
+      </button>
+      {isOpen1 && (
+        <ul className="filmlist">
+          {tempMovieData.map((movie) => (
+            <li key={movie.imdbID}>
+              <img src={movie.Poster} alt={`${movie.Title} Poster`} />
+              <h3>{movie.Title}</h3>
+              <div>
+                <p>
+                  <span>📅</span>
+                  <span>{movie.Year}</span>
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function Watched({
+  watched,
+  avgImdbRating,
+  avgUserRating,
+  avgRuntime,
+  onIsOpen2Change,
+  isOpen2,
+}) {
+  return (
+    <div className="box">
+      <button className="btn-toggle" onClick={onIsOpen2Change}>
+        {isOpen2 ? '-' : '+'}
+      </button>
+      {isOpen2 && (
+        <>
+          <div className="summary">
+            <h2>Movies you already watched!</h2>
             <div>
               <p>
-                <span>📅</span>
-                <span>{movie.Year}</span>
+                <span>🎞️</span>
+                <span>{watched.length} movies</span>
+              </p>
+              <p>
+                <span>⭐</span>
+                <span>{avgImdbRating}</span>
+              </p>
+              <p>
+                <span>💫</span>
+                <span>{avgUserRating}</span>
+              </p>
+              <p>
+                <span>⌛</span>
+                <span>{avgRuntime}</span>
               </p>
             </div>
-          </li>
-        ))}
-      </ul>
+          </div>
+
+          <ul className="filmlist">
+            {watched.map((movie) => (
+              <li key={movie.imdbID}>
+                <img src={movie.Poster} alt={`${movie.Title} Poster`}></img>
+                <h3>{movie.Title}</h3>
+                <div>
+                  <p>
+                    <span>⭐</span>
+                    <span>{movie.imdbRating}</span>
+                  </p>
+                  <p>
+                    <span>💫</span>
+                    <span>{movie.userRating}</span>
+                  </p>
+                  <p>
+                    <span>⌛</span>
+                    <span>{movie.runtime}</span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 }
