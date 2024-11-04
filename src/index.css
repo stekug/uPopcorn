@@ -84,8 +84,11 @@ body {
   font-size: 1.8rem;
 }
 
+<<<<<<< HEAD
 /* ******* */
 
+=======
+>>>>>>> 14efe72 (add FilmList component and basic styling)
 .filmlist {
   list-style: none;
   padding: 0.8rem 0;
