@@ -1,8 +1,34 @@
-# React + Vite
+# 🎬 Movie Finder & Watchlist
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a kind of mini-recap for me, where I try out various things and techniques like:
 
-Currently, two official plugins are available:
+- **`propTypes`**
+- **`css`**
+- **`layout`**
+- **`children`**
+- **`components`**
+- **`composition`**
+- **`reusability`**
+- **`prop drilling`**
+- **`...`**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It is a simple movie finder and a private movie reminder/watched film storage application.
+
+## 🚀 Getting Started
+
+This project uses **React** and **Vite**. Below is a brief explanation on how to use the project.
+
+### Prerequisites
+
+- **Node.js** installed on your machine
+- **npm** package manager
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/stekug/uPopcorn
+   cd uPopcorn
+   npm i
+   npm run dev
