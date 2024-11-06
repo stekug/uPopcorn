@@ -6,7 +6,7 @@ import Main from './components/Main';
 import Box from './components/Box';
 import MovieList from './components/MovieList';
 import WatchedSummary from './components/WatchedSummary';
-import WatchedFilmList from './components/WatchedFilmList';
+import WatchedMovieList from './components/WatchedMovieList';
 
 const tempMovieData = [
   {
@@ -70,7 +70,7 @@ export default function App() {
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
-          <WatchedFilmList watched={watched} />
+          <WatchedMovieList watched={watched} />
         </Box>
       </Main>
     </>

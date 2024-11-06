@@ -1,6 +1,6 @@
 import WatchedMovie from './WatchedMovie';
 
-export default function WatchedFilmList({ watched }) {
+export default function WatchedMovieList({ watched }) {
   return (
     <ul className="filmlist">
       {watched.map((movie) => (
