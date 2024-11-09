@@ -129,6 +129,8 @@ export default function App() {
             <MovieDetails
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
+              KEY={KEY}
+              query={query}
             />
           ) : (
             <>
