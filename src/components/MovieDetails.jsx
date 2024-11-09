@@ -5,6 +5,7 @@ import Loader from './Loader';
 export default function MovieDetails({ selectedId, onCloseMovie, KEY }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const {
     Title: title,
@@ -22,13 +23,24 @@ export default function MovieDetails({ selectedId, onCloseMovie, KEY }) {
   useEffect(
     function () {
       async function getMovieDetails() {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
-        );
-        const data = await res.json();
-        setMovie(data);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+          );
+
+          if (!res.ok)
+            throw new Error(
+              'Something went wrong with fetching the movie details'
+            );
+
+          const data = await res.json();
+          setMovie(data);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
       getMovieDetails();
     },
