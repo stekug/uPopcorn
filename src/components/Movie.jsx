@@ -1,5 +1,4 @@
 export default function Movie({ movie, onSelectMovie }) {
-  console.log(movie);
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
       <img src={movie.Poster} alt={`${movie.Title} Poster`} />
