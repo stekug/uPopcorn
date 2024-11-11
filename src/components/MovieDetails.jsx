@@ -74,6 +74,18 @@ export default function MovieDetails({
     [selectedId]
   );
 
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie | ${title}`;
+
+      return function () {
+        document.title = 'uPopcorn Movie Tracker';
+      };
+    },
+    [title]
+  );
+
   return (
     <div className="details">
       {isLoading ? (
