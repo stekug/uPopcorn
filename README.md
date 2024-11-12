@@ -1,6 +1,6 @@
 # 🎬 Movie Finder & Watchlist
 
-This project is a kind of mini-recap for me, where I try out various things and techniques like:
+This project is a kind of mini-recap for me, where I try out various things and techniques or hooks like:
 
 - **`propTypes`**
 - **`css`**
@@ -10,6 +10,9 @@ This project is a kind of mini-recap for me, where I try out various things and 
 - **`composition`**
 - **`reusability`**
 - **`prop drilling`**
+- **`useEffect`**
+- **`useRef`**
+- **`keydown eventlistener`**
 - **`...`**
 
 It is a simple movie finder and a private movie reminder/watched film storage application.
@@ -32,3 +35,4 @@ This project uses **React** and **Vite**. Below is a brief explanation on how to
    cd uPopcorn
    npm i
    npm run dev
+   ```
