@@ -13,6 +13,8 @@ This project is a kind of mini-recap for me, where I try out various things and 
 - **`useEffect`**
 - **`useRef`**
 - **`keydown eventlistener`**
+- **`custom hooks`**
+- **`local storage`**
 - **`...`**
 
 It is a simple movie finder and a private movie reminder/watched film storage application.
